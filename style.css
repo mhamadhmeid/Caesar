@@ -1,0 +1,388 @@
+/* ===== Caesar — Tech Blog =====
+   Palette
+   --ink:      #1B2A4A  deep indigo (headers, primary)
+   --sand:     #FAF6EF  warm paper background
+   --gold:     #C98A2C  burnished gold accent
+   --moss:     #4C7A5E  quiet green (safety / confirmation)
+   --char:     #26241F  body text
+   --line:     #E4DACB  hairline rule on sand
+*/
+
+:root{
+  --ink:#1B2A4A;
+  --ink-2:#233457;
+  --sand:#FAF6EF;
+  --paper:#FFFFFF;
+  --gold:#C98A2C;
+  --gold-dark:#A8721E;
+  --moss:#4C7A5E;
+  --char:#26241F;
+  --sub:#6B6456;
+  --line:#E4DACB;
+  --radius:14px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  margin:0;
+  background:var(--sand);
+  color:var(--char);
+  font-family:'Tajawal', 'Google Sans Arabic', sans-serif;
+  direction:rtl;
+  line-height:1.8;
+}
+
+h1,h2,h3,.brand{
+  font-family:'Cairo', 'Google Sans Arabic', sans-serif;
+}
+
+a{color:inherit;text-decoration:none;}
+
+img{max-width:100%;display:block;}
+
+.wrap{
+  max-width:1080px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* ---------- Header ---------- */
+header.site{
+  background:var(--ink);
+  color:var(--sand);
+  border-bottom:3px solid var(--gold);
+}
+header.site .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-top:18px;
+  padding-bottom:18px;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+.brand .mark{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--gold);
+  color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cairo',sans-serif;
+  font-weight:800;
+  font-size:18px;
+}
+nav.main ul{
+  list-style:none;
+  display:flex;
+  gap:26px;
+  margin:0;padding:0;
+  font-size:15px;
+}
+nav.main a{opacity:.9;}
+nav.main a:hover{opacity:1;color:var(--gold);}
+
+/* ---------- Hero / Featured ---------- */
+.hero{
+  padding:48px 0 32px;
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:36px;
+  align-items:center;
+}
+.hero .eyebrow{
+  color:var(--gold-dark);
+  font-weight:700;
+  font-size:14px;
+  margin-bottom:10px;
+}
+.hero h1{
+  font-size:38px;
+  line-height:1.35;
+  margin:0 0 16px;
+  color:var(--ink);
+}
+.hero p{color:var(--sub);font-size:16px;max-width:46ch;}
+.hero-art{
+  background:var(--ink);
+  border-radius:20px;
+  aspect-ratio:4/3;
+  position:relative;
+  overflow:hidden;
+}
+.hero-art svg{position:absolute;inset:0;}
+
+/* ---------- Section labels ---------- */
+.section-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin:44px 0 22px;
+}
+.section-head h2{
+  font-size:22px;
+  color:var(--ink);
+  margin:0;
+  position:relative;
+  padding-inline-start:14px;
+}
+.section-head h2::before{
+  content:"";
+  position:absolute;
+  right:0;top:4px;bottom:4px;
+  width:5px;
+  background:var(--gold);
+  border-radius:3px;
+}
+.section-head a{font-size:14px;color:var(--gold-dark);font-weight:700;}
+
+/* ---------- Post cards ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(27,42,74,.08);
+}
+.card .thumb{
+  aspect-ratio:16/10;
+  background:linear-gradient(135deg,var(--ink),var(--ink-2));
+  position:relative;
+}
+.card .tag{
+  position:absolute;
+  top:10px; right:10px;
+  background:var(--gold);
+  color:var(--ink);
+  font-size:12px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:100px;
+}
+.card .body{padding:16px 18px 20px;}
+.card h3{
+  font-size:17px;
+  margin:0 0 8px;
+  color:var(--ink);
+  line-height:1.5;
+}
+.card p{
+  font-size:14px;
+  color:var(--sub);
+  margin:0;
+}
+.card .meta{
+  margin-top:12px;
+  font-size:12px;
+  color:var(--sub);
+  display:flex;
+  gap:10px;
+}
+
+/* ---------- Two column layout with sidebar ---------- */
+.layout{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:36px;
+  padding-bottom:60px;
+}
+.sidebar .box{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px;
+  margin-bottom:22px;
+}
+.sidebar h3{
+  font-size:15px;
+  color:var(--ink);
+  margin:0 0 14px;
+}
+.pill-list{display:flex;flex-wrap:wrap;gap:8px;}
+.pill{
+  font-size:13px;
+  background:var(--sand);
+  border:1px solid var(--line);
+  padding:6px 12px;
+  border-radius:100px;
+  color:var(--ink);
+}
+.social-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.social-list a{
+  display:flex;align-items:center;gap:10px;
+  font-size:14px;color:var(--char);
+}
+.social-list .dot{width:8px;height:8px;border-radius:50%;background:var(--moss);}
+
+/* ---------- Footer ---------- */
+footer.site{
+  background:var(--ink);
+  color:var(--sand);
+  padding:34px 0;
+  margin-top:20px;
+}
+footer.site .wrap{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+}
+footer.site p{margin:0;font-size:13px;opacity:.8;}
+footer.site .flinks{display:flex;gap:18px;font-size:13px;opacity:.85;}
+
+/* ---------- Article page ---------- */
+.article-head{
+  padding:40px 0 20px;
+  border-bottom:1px solid var(--line);
+}
+.article-head .cat{
+  color:var(--gold-dark);
+  font-weight:700;
+  font-size:13px;
+}
+.article-head h1{
+  font-size:32px;
+  color:var(--ink);
+  margin:12px 0;
+  line-height:1.4;
+}
+.article-head .byline{
+  color:var(--sub);
+  font-size:14px;
+  display:flex;
+  gap:14px;
+}
+.article-body{
+  max-width:70ch;
+  margin:34px auto 0;
+  font-size:17px;
+}
+.article-body h2{
+  color:var(--ink);
+  font-size:21px;
+  margin-top:34px;
+}
+.article-body p{margin:0 0 18px;color:var(--char);}
+.article-body ul{padding-inline-start:22px;color:var(--char);}
+.article-body ul li{margin-bottom:8px;}
+
+.dl-box{
+  margin:30px auto 50px;
+  max-width:70ch;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px;
+  text-align:center;
+}
+.dl-box p{color:var(--sub);font-size:14px;margin:0 0 16px;}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--gold);
+  color:var(--ink);
+  font-weight:800;
+  font-size:15px;
+  padding:13px 28px;
+  border-radius:100px;
+  border:none;
+  cursor:pointer;
+}
+.btn:hover{background:var(--gold-dark);color:var(--sand);}
+
+/* ---------- Gate / waiting page ---------- */
+.gate-wrap{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:var(--sand);
+}
+.gate-top{
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+  padding:16px 0;
+}
+.gate-top .wrap{display:flex;align-items:center;justify-content:space-between;}
+.gate-top .close{
+  width:36px;height:36px;
+  border-radius:8px;
+  background:var(--ink);
+  color:var(--sand);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.gate-top h2{font-size:16px;color:var(--ink);margin:0;}
+
+.gate-main{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+}
+.gate-card{
+  max-width:520px;
+  width:100%;
+  text-align:center;
+}
+.ring-wrap{
+  position:relative;
+  width:160px;height:160px;
+  margin:0 auto 30px;
+}
+.ring-wrap svg{transform:rotate(-90deg);}
+.ring-bg{stroke:var(--line);}
+.ring-fg{
+  stroke:var(--ink);
+  stroke-linecap:round;
+  transition:stroke-dashoffset .3s linear;
+}
+.ring-num{
+  position:absolute;
+  inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cairo',sans-serif;
+  font-size:34px;
+  font-weight:800;
+  color:var(--ink);
+}
+.gate-status{
+  font-size:15px;
+  color:var(--sub);
+  margin-bottom:6px;
+}
+.gate-note{
+  border:1.5px dashed var(--moss);
+  border-radius:12px;
+  padding:22px;
+  margin-bottom:22px;
+  background:rgba(76,122,94,.06);
+}
+.gate-note h3{
+  color:var(--moss);
+  font-size:19px;
+  margin:0 0 10px;
+}
+.gate-note p{color:var(--sub);font-size:14px;margin:0;}
+
+.gate-result{display:none;}
+.gate-result.show{display:block;}
+.gate-waiting.hide{display:none;}

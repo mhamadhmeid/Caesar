@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفحة تحويل | Caesar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="gate-wrap">
+  <div class="gate-top">
+    <div class="wrap">
+      <h2>صفحة تحويل</h2>
+      <a href="article-1.html" class="close" aria-label="إغلاق">×</a>
+    </div>
+  </div>
+
+  <div class="gate-main">
+    <div class="gate-card">
+
+      <div class="gate-waiting" id="waiting">
+        <div class="ring-wrap">
+          <svg width="160" height="160" viewBox="0 0 160 160">
+            <circle class="ring-bg" cx="80" cy="80" r="70" fill="none" stroke-width="10"/>
+            <circle class="ring-fg" id="ring" cx="80" cy="80" r="70" fill="none" stroke-width="10"
+                    stroke-dasharray="440" stroke-dashoffset="0"/>
+          </svg>
+          <div class="ring-num" id="count">15</div>
+        </div>
+
+        <div class="gate-note">
+          <h3>جاري تحضير الرابط الخاص بك، يرجى الانتظار قليلًا</h3>
+          <p>نحن نقوم بفحص الرابط للتأكد من سلامته لضمان تجربة آمنة لك.</p>
+        </div>
+
+        <p class="gate-status">عزيزي الزائر، نشكرك على ثقتك واختيارك لموقع Caesar من بين المواقع التقنية. نسعى دائمًا لتقديم محتوى يليق بتطلعاتك.</p>
+      </div>
+
+      <div class="gate-result" id="result">
+        <div class="gate-note" style="border-color:var(--gold-dark); background:rgba(201,138,44,.08);">
+          <h3 style="color:var(--gold-dark);">الرابط جاهز الآن</h3>
+          <p>اضغط على الزر أدناه للانتقال إلى صفحة التحميل المباشر.</p>
+        </div>
+        <a class="btn" href="#" id="finalLink">الانتقال إلى رابط التحميل</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const TOTAL = 15;
+  const circumference = 2 * Math.PI * 70; // ≈ 440
+  const ring = document.getElementById('ring');
+  const countEl = document.getElementById('count');
+  const waitingEl = document.getElementById('waiting');
+  const resultEl = document.getElementById('result');
+
+  ring.setAttribute('stroke-dasharray', circumference);
+  let remaining = TOTAL;
+
+  function tick(){
+    countEl.textContent = remaining;
+    const progress = (TOTAL - remaining) / TOTAL;
+    ring.setAttribute('stroke-dashoffset', circumference * (1 - progress));
+
+    if(remaining <= 0){
+      clearInterval(timer);
+      waitingEl.classList.add('hide');
+      resultEl.classList.add('show');
+      // Replace '#' with the real destination URL for this download.
+      document.getElementById('finalLink').setAttribute('href', '#');
+      return;
+    }
+    remaining -= 1;
+  }
+
+  tick();
+  const timer = setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
